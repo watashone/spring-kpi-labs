@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Apartments</title>
+</head>
+<body>
+<h1>Search Apartments</h1>
+<form th:action="@{/apartments/search}" th:object="${params}" method="post">
+    <label>Number of Rooms:
+        <input type="number" th:field="*{rooms}" min="0" />
+    </label><br/>
+    <label>Minimum Area (sq.m.):
+        <input type="number" th:field="*{area}" step="0.1" min="0" />
+    </label><br/>
+    <label>
+        <input type="checkbox" th:field="*{hasBalcony}" /> Balcony
+    </label><br/>
+    <label>
+        <input type="checkbox" th:field="*{furnished}" /> Furnished
+    </label><br/>
+    <button type="submit">Search</button>
+</form>
+<a th:href="@{/apartments}">Back to Apartment List</a>
+</body>
+</html>

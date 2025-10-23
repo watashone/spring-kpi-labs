@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Apartment</title>
+</head>
+<body>
+<h1>Edit Apartment</h1>
+<form th:action="@{/apartments/edit}" th:object="${apartment}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Address:
+        <input type="text" th:field="*{address}" required />
+    </label><br/>
+    <label>Price:
+        <input type="number" th:field="*{price}" step="0.01" min="0" required />
+    </label><br/>
+    <label>Number of Rooms:
+        <input type="number" th:field="*{params.rooms}" min="1" required />
+    </label><br/>
+    <label>Area (sq.m.):
+        <input type="number" th:field="*{params.area}" step="0.1" min="0" required />
+    </label><br/>
+    <label>
+        <input type="checkbox" th:field="*{params.hasBalcony}" /> Balcony
+    </label><br/>
+    <label>
+        <input type="checkbox" th:field="*{params.furnished}" /> Furnished
+    </label><br/>
+    <label>Description:
+        <textarea th:field="*{description}"></textarea>
+    </label><br/>
+    <button type="submit">Update</button>
+</form>
+<a th:href="@{/apartments}">Back to Apartment List</a>
+</body>
+</html>
