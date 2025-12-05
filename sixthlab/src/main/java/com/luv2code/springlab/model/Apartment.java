@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 public class Apartment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String address;
@@ -19,23 +19,20 @@ public class Apartment {
     private Integer rooms;
     private Double area;
 
-    @Column(name = "has_balcony") // Вказуємо точну назву колонки в БД
+    @Column(name = "has_balcony")
     private Boolean hasBalcony;
 
     private Boolean furnished;
     private String description;
 
-    // Зв'язок з Landlord (Many-to-One)
     @ManyToOne
-    @JoinColumn(name = "landlord_id") // Це назва колонки зовнішнього ключа в таблиці apartment
+    @JoinColumn(name = "landlord_id")
     private Landlord landlord;
 
-    // Зв'язок з Client (Many-to-One)
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
-    // Геттери та Сеттери
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public String getAddress() { return address; }

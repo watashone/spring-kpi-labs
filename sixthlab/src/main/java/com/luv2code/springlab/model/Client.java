@@ -9,18 +9,16 @@ import java.util.List;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Відповідає AUTO_INCREMENT
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
     private String name;
 
-    // Один клієнт може орендувати багато квартир (теоретично)
     @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Apartment> apartments;
 
-    // Геттери та Сеттери
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public String getName() { return name; }
